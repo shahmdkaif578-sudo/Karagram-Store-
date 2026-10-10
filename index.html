@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karagram Store</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f7f7f7;
+  color:#171717;
+}
+header{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:22px 15px;
+}
+header h1{margin:0;font-size:28px}
+header p{margin:7px 0 0;color:#ddd}
+.container{max-width:520px;margin:auto;padding:16px}
+
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:18px;
+  box-shadow:0 5px 22px rgba(0,0,0,.08);
+}
+
+.main-img{
+  width:100%;
+  border-radius:15px;
+  display:block;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+.thumbs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+  margin-top:9px;
+}
+
+.thumbs img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:9px;
+  cursor:pointer;
+  border:2px solid #eee;
+}
+
+h2{margin-bottom:7px}
+
+.price{
+  font-size:28px;
+  font-weight:bold;
+}
+.old{
+  color:#888;
+  text-decoration:line-through;
+  margin-left:8px;
+}
+.offer{
+  display:inline-block;
+  background:#eaffef;
+  color:#16823b;
+  padding:7px 10px;
+  border-radius:8px;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:14px;
+  margin:7px 0;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+}
+textarea{min-height:100px}
+
+button{
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:11px;
+  background:#25D366;
+  color:#fff;
+  font-size:18px;
+  font-weight:bold;
+  margin-top:10px;
+}
+button:disabled{opacity:.6}
+
+#status{
+  text-align:center;
+  margin-top:12px;
+  font-weight:bold;
+}
+
+.info{
+  background:#f8f8f8;
+  padding:12px;
+  border-radius:10px;
+  margin:12px 0;
+  line-height:1.6;
+}
+
+.secure{
+  text-align:center;
+  color:#777;
+  font-size:13px;
+  margin-top:12px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Karagram Store</h1>
+<p>Premium Jewellery • Easy Ordering</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<img
+ id="mainImage"
+ class="main-img"
+ src="https://i.ibb.co/Z6ZYwhfj/IMG-20261011-WA0003.jpg"
+ alt="Premium Jewellery">
+
+<div class="thumbs">
+
+<img
+ src="https://i.ibb.co/Z6ZYwhfj/IMG-20261011-WA0003.jpg"
+ onclick="changeImage(this.src)"
+ alt="Jewellery 1">
+
+<img
+ src="https://i.ibb.co/DgzB0M5J/IMG-20261011-WA0000.jpg"
+ onclick="changeImage(this.src)"
+ alt="Jewellery 2">
+
+<img
+ src="https://i.ibb.co/7xL239ct/IMG-20261011-WA0002.jpg"
+ onclick="changeImage(this.src)"
+ alt="Jewellery 3">
+
+<img
+ src="https://i.ibb.co/FbPNj4s5/IMG-20261011-WA0001.jpg"
+ onclick="changeImage(this.src)"
+ alt="Jewellery 4">
+
+</div>
+
+<h2>Premium Water Drop Necklace</h2>
+
+<p>
+Beautiful premium jewellery with an elegant water-drop
+design. Perfect for gifting and everyday styling.
+</p>
+
+<span class="price">₹499</span>
+<span class="old">₹799</span>
+
+<br>
+<span class="offer">Special Offer</span>
+
+<div class="info">
+✓ Premium Design<br>
+✓ Easy Online Ordering<br>
+✓ Cash on Delivery<br>
+✓ WhatsApp Order Confirmation
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Place Your Order</h2>
+
+<form id="orderForm">
+
+<input type="hidden"
+ name="product"
+ value="Premium Water Drop Necklace">
+
+<input type="hidden"
+ name="price"
+ value="₹499">
+
+<input
+ type="text"
+ id="name"
+ name="customer_name"
+ placeholder="Full Name"
+ required>
+
+<input
+ type="tel"
+ id="phone"
+ name="phone"
+ placeholder="10-digit Mobile Number"
+ inputmode="numeric"
+ required>
+
+<textarea
+ id="address"
+ name="delivery_address"
+ placeholder="Full Delivery Address"
+ required></textarea>
+
+<input
+ type="text"
+ id="pincode"
+ name="pincode"
+ placeholder="6-digit PIN Code"
+ inputmode="numeric"
+ required>
+
+<select id="quantity" name="quantity">
+<option value="1">Quantity: 1</option>
+<option value="2">Quantity: 2</option>
+<option value="3">Quantity: 3</option>
+<option value="4">Quantity: 4</option>
+<option value="5">Quantity: 5</option>
+</select>
+
+<select id="payment" name="payment_method">
+<option value="Cash on Delivery">
+Cash on Delivery
+</option>
+</select>
+
+<button id="orderButton" type="submit">
+Place Order
+</button>
+
+<div id="status"></div>
+
+</form>
+
+<div class="secure">
+🔒 Your order details are securely submitted.
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Karagram Store
+</footer>
+
+<script>
+
+function changeImage(src){
+ document.getElementById("mainImage").src=src;
+}
+
+const form=document.getElementById("orderForm");
+const button=document.getElementById("orderButton");
+const statusBox=document.getElementById("status");
+
+form.addEventListener("submit",async function(e){
+
+ e.preventDefault();
+
+ const name=document.getElementById("name").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const address=document.getElementById("address").value.trim();
+ const pincode=document.getElementById("pincode").value.trim();
+ const quantity=document.getElementById("quantity").value;
+ const payment=document.getElementById("payment").value;
+
+ if(!/^[0-9]{10}$/.test(phone)){
+   alert("Please enter a valid 10-digit mobile number.");
+   return;
+ }
+
+ if(!/^[0-9]{6}$/.test(pincode)){
+   alert("Please enter a valid 6-digit PIN code.");
+   return;
+ }
+
+ button.disabled=true;
+ button.innerText="Placing Order...";
+ statusBox.innerText="Submitting your order...";
+
+ const formData=new FormData(form);
+
+ try{
+
+   const response=await fetch(
+     "https://formspree.io/f/mljgnpgb",
+     {
+       method:"POST",
+       body:formData,
+       headers:{"Accept":"application/json"}
+     }
+   );
+
+   if(!response.ok){
+     throw new Error("Submission failed");
+   }
+
+   statusBox.innerText=
+     "✓ Order received! Opening WhatsApp...";
+
+   const message=
+`NEW ORDER - KARAGRAM STORE
+
+Product: Premium Water Drop Necklace
+Price: ₹499
+Quantity: ${quantity}
+
+Customer Name: ${name}
+Mobile: ${phone}
+
+Delivery Address:
+${address}
+
+PIN Code: ${pincode}
+
+Payment: ${payment}
+
+Please confirm my order.`;
+
+   const whatsappNumber="916390855968";
+
+   const whatsappURL=
+     "https://wa.me/"+whatsappNumber+
+     "?text="+encodeURIComponent(message);
+
+   setTimeout(function(){
+     window.location.href=whatsappURL;
+   },700);
+
+ }catch(error){
+
+   statusBox.innerText=
+     "Order could not be submitted. Please try again.";
+
+   button.disabled=false;
+   button.innerText="Place Order";
+ }
+
+});
+
+</script>
+
+</body>
+        </html>
